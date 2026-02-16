@@ -152,7 +152,7 @@ func (s *sbc) createAndRunLetsEncrypt(fqdnNames []string) error {
 		fmt.Sprintf("PGID=1000"),
 		fmt.Sprintf(fmt.Sprintf("TZ=%s", viper.GetString(flagnames.Timezone))),
 		fmt.Sprintf("VALIDATION=http"),
-		fmt.Sprintf("URL=%s", firstFqdnSplitByDot[1]+"."+firstFqdnSplitByDot[2]),
+		fmt.Sprintf("URL=%s", strings.Join(firstFqdnSplitByDot[1:],".")),
 		fmt.Sprintf("SUBDOMAINS=%s", firstFqdnSplitByDot[0]),
 		fmt.Sprintf("ONLY_SUBDOMAINS=true"),
 		fmt.Sprintf("EXTRA_DOMAINS=%s", extraDomains),
